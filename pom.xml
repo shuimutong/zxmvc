@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.ourpass</groupId>
 	<artifactId>zxmvc</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>zxmvc Maven Webapp</name>
 	<url>http://maven.apache.org</url>

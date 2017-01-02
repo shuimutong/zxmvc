@@ -3,8 +3,8 @@ package cn.ourpass.zxmvc.controller;
 import cn.ourpass.zxmvc.annotation.XController;
 import cn.ourpass.zxmvc.annotation.XRequestMapping;
 
-@XController
-@XRequestMapping("testR/testt")
+//@XController
+//@XRequestMapping("testR/testt")
 public class TestRController {
     @XRequestMapping("testA")
     public void testA() {

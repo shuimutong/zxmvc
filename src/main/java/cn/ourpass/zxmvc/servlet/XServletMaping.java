@@ -16,7 +16,9 @@ import org.apache.log4j.Logger;
 
 import cn.ourpass.zxdata.helpkits.AnnotationHelp;
 import cn.ourpass.zxmvc.annotation.XController;
+import cn.ourpass.zxmvc.annotation.XRepository;
 import cn.ourpass.zxmvc.annotation.XRequestMapping;
+import cn.ourpass.zxmvc.annotation.XService;
 import cn.ourpass.zxmvc.bean.EntityBean;
 import cn.ourpass.zxmvc.bean.RequestMappingBean;
 import cn.ourpass.zxmvc.utils.ClassUtils;
@@ -70,7 +72,10 @@ public class XServletMaping {
             for (EntityBean eb : beanList) {
                 Class clazz = eb.getClazz();
                 //保存由框架管理的bean
-                if(AnnotationHelp.isHasTheAnnotation(clazz, XController.class)) {
+                if(AnnotationHelp.isHasTheAnnotation(clazz, XController.class) 
+                        || AnnotationHelp.isHasTheAnnotation(clazz, XService.class)
+                        || AnnotationHelp.isHasTheAnnotation(clazz, XRepository.class)
+                        || AnnotationHelp.isHasTheAnnotation(clazz, XRepository.class)) {
                     BEAN_MAP.put(clazz.getName(), eb);
                 }
                 //保存url映射关系

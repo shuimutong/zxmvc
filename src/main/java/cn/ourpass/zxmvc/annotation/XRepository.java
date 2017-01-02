@@ -6,17 +6,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Controller注解
+ * Repository注解
  * @author simple
  *
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.TYPE})
-public @interface XRequestMapping {
-    /**
-     * 关联路径
-     * @return
-     */
-    String[] value() default {};
-    
+@Target({ElementType.TYPE})
+public @interface XRepository {
+
 }

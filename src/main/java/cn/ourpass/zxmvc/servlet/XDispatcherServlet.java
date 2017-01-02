@@ -1,7 +1,7 @@
 package cn.ourpass.zxmvc.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Field;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,8 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import cn.ourpass.zxdata.helpkits.AnnotationHelp;
+import cn.ourpass.zxmvc.annotation.XAutowired;
+import cn.ourpass.zxmvc.annotation.XController;
 import cn.ourpass.zxmvc.bean.EntityBean;
 import cn.ourpass.zxmvc.bean.RequestMappingBean;
+import cn.ourpass.zxmvc.utils.ClassUtils;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -63,10 +67,11 @@ public class XDispatcherServlet extends HttpServlet {
 	    
 	    RequestMappingBean requestBean = XServletMaping.getUrlMap().get(requestUri);
 	    String destClazzName = requestBean.getClazzName();
+	    //获取目标类对象
 	    EntityBean entityBean = XServletMaping.getBeanMap().get(destClazzName);
-	    Class clazz = entityBean.getClazz();
+	    ClassUtils.initBeans(XServletMaping.getBeanMap(), entityBean);
 	    try {
-            requestBean.getMethod().invoke(clazz.newInstance(), null);
+            requestBean.getMethod().invoke(entityBean.getO(), request, response);
         } catch (Exception e) {
             e.printStackTrace();
         }

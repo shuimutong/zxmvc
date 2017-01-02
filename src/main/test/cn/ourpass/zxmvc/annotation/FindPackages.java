@@ -1,14 +1,22 @@
 package cn.ourpass.zxmvc.annotation;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.springframework.test.context.TestContext;
 
 import cn.ourpass.zxmvc.bean.EntityBean;
 
 public class FindPackages {
     public static void main(String[] args) throws Exception {
-        findClass();
+        Class clazz = TestContext.class;
+        Field[] fs = clazz.getDeclaredFields();
+        System.out.println(fs.length);
+        for(Field f : fs) {
+            System.out.println(f);
+        }
     }
     
     public static void findClass() {

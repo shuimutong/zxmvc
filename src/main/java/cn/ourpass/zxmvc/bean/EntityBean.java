@@ -20,6 +20,7 @@ public class EntityBean {
      * 实例对象
      */
     private Object o;
+    
     public EntityBean(String name, Class clazz) {
         super();
         this.name = name;
