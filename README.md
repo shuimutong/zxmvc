@@ -6,7 +6,7 @@ This project is to finish the springMVC work, now supply:
 *	@XRepository
 *	@XComponent
 ##IOC
-*	@XAutowired singleton\<br/>
+*	@XAutowired singleton
 *	You can use like follow:
 ```java
 <servlet>
