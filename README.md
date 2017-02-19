@@ -5,9 +5,11 @@ This project is to finish the springMVC work, now supply:
 *	@XService
 *	@XRepository
 *	@XComponent
+
 ##IOC
 *	@XAutowired singleton
-*	You can use like follow:
+
+##You can use like follow:
 ```java
 <servlet>
 	<servlet-name>XDispatcherServlet</servlet-name>
