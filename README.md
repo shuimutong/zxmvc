@@ -1,12 +1,12 @@
 # zxmvc
 This project is to finish the springMVC work, now supply:
 * annotation mvc
-  ** @XController
-  ** @XService
-  ** @XRepository
-  ** @XComponent
+** @XController
+** @XService
+** @XRepository
+** @XComponent
 * IOC
-  ** @XAutowired singleton
+** @XAutowired singleton
 You can use like follow:
 <servlet>
   	<servlet-name>XDispatcherServlet</servlet-name>
