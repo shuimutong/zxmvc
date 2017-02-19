@@ -5,13 +5,12 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.springframework.test.context.TestContext;
-
 import cn.ourpass.zxmvc.bean.EntityBean;
+import cn.ourpass.zxmvc.controller.TestController;
 
 public class FindPackages {
     public static void main(String[] args) throws Exception {
-        Class clazz = TestContext.class;
+        Class clazz = TestController.class;
         Field[] fs = clazz.getDeclaredFields();
         System.out.println(fs.length);
         for(Field f : fs) {

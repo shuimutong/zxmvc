@@ -7,7 +7,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -15,10 +16,10 @@ import org.apache.log4j.Logger;
  *
  */
 public class RequestUtil {
+    private static final Logger log = LoggerFactory.getLogger(RequestUtil.class);
 
 	public static final String ENCODING = "UTF-8";
 	
-	private final static Logger log = Logger.getLogger(RequestUtil.class);
 	
 	public static short getShort(HttpServletRequest request, String key,
 			short defaultValue) {

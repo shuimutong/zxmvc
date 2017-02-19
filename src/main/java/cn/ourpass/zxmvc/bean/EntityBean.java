@@ -1,5 +1,7 @@
 package cn.ourpass.zxmvc.bean;
 
+import java.lang.annotation.Annotation;
+
 import com.alibaba.fastjson.JSONObject;
 
 /**
@@ -15,13 +17,13 @@ public class EntityBean {
     /**
      * class
      */
-    private Class clazz;
+    private Class<? extends Annotation> clazz;
     /**
      * 实例对象
      */
     private Object o;
     
-    public EntityBean(String name, Class clazz) {
+    public EntityBean(String name, Class<? extends Annotation> clazz) {
         super();
         this.name = name;
         this.clazz = clazz;
@@ -36,10 +38,10 @@ public class EntityBean {
     public void setName(String name) {
         this.name = name;
     }
-    public Class getClazz() {
+    public Class<?> getClazz() {
         return clazz;
     }
-    public void setClazz(Class clazz) {
+    public void setClazz(Class<? extends Annotation> clazz) {
         this.clazz = clazz;
     }
     

@@ -1,7 +1,6 @@
 package cn.ourpass.zxmvc.service;
 
 import cn.ourpass.zxmvc.annotation.XAutowired;
-import cn.ourpass.zxmvc.annotation.XService;
 import cn.ourpass.zxmvc.dao.TestADao;
 
 //@XService

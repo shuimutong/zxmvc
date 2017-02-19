@@ -1,5 +1,6 @@
 package cn.ourpass.zxmvc.utils;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
@@ -7,9 +8,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import cn.ourpass.zxdata.helpkits.AnnotationHelp;
 import cn.ourpass.zxmvc.annotation.XAutowired;
 import cn.ourpass.zxmvc.bean.EntityBean;
 
@@ -22,7 +23,7 @@ import cn.ourpass.zxmvc.bean.EntityBean;
  * <p>Date: 2017年1月2日</p>
  */
 public class ClassUtils {
-    private final static Logger log = Logger.getLogger(ClassUtils.class);
+    private static final Logger log = LoggerFactory.getLogger(ClassUtils.class);
     
     /**
      * 遍历所有类
@@ -37,7 +38,8 @@ public class ClassUtils {
                 if(s.endsWith(".class")) {
                     String className = filterClassName(rootPath, s);
                     try {
-                        Class clazz = Class.forName(className);
+                        @SuppressWarnings("unchecked")
+                        Class<? extends Annotation> clazz = (Class<? extends Annotation>) Class.forName(className);
                         EntityBean bean = new EntityBean(clazz.getName(), clazz);
                         beanList.add(bean);
                     } catch (ClassNotFoundException e) {
@@ -76,7 +78,7 @@ public class ClassUtils {
             return null;
         } 
         if(destEntityBean.getO() == null) {
-            Class clazz = destEntityBean.getClazz();
+            Class<?> clazz = destEntityBean.getClazz();
             try {
                 destEntityBean.setO(clazz.newInstance());
             } catch (Exception e1) {
@@ -91,7 +93,7 @@ public class ClassUtils {
                         Object fVal = f.get(destEntityBean.getO());
                         //依赖值为空，需要注入
                         if(fVal == null) {
-                            Class fieldClazz = f.getType();
+                            Class<?> fieldClazz = f.getType();
                             //获取依赖的对象
                             EntityBean relayEntityBean = entityBeanMap.get(fieldClazz.getName());
                             //通过类名获取不到或者是接口，查询它的子类

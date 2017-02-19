@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cn.ourpass.zxmvc.annotation.XAutowired;
-import cn.ourpass.zxmvc.annotation.XController;
 import cn.ourpass.zxmvc.annotation.XRequestMapping;
 import cn.ourpass.zxmvc.service.TestAService;
 import cn.ourpass.zxmvc.utils.RequestUtil;
@@ -19,6 +18,7 @@ public class TestController {
     
     @XRequestMapping("/testA")
     public void testA(HttpServletRequest request, HttpServletResponse reponse) {
+        
         System.out.println("Hi, this is TestA");
         testAService.printA();
     }

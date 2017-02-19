@@ -1,18 +1,15 @@
 package cn.ourpass.zxmvc.servlet;
 
 import java.io.IOException;
-import java.lang.reflect.Field;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import cn.ourpass.zxdata.helpkits.AnnotationHelp;
-import cn.ourpass.zxmvc.annotation.XAutowired;
-import cn.ourpass.zxmvc.annotation.XController;
 import cn.ourpass.zxmvc.bean.EntityBean;
 import cn.ourpass.zxmvc.bean.RequestMappingBean;
 import cn.ourpass.zxmvc.utils.ClassUtils;
@@ -23,8 +20,8 @@ import com.alibaba.fastjson.JSONObject;
  * Servlet implementation class XDispatcherServlet
  */
 public class XDispatcherServlet extends HttpServlet {
-    private final static Logger log = Logger.getLogger(XDispatcherServlet.class);
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = -8785454975069098522L;
+    private static final Logger log = LoggerFactory.getLogger(XDispatcherServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()

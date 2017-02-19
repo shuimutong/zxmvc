@@ -1,5 +1,6 @@
 package cn.ourpass.zxmvc.servlet;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,15 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import cn.ourpass.zxdata.helpkits.AnnotationHelp;
 import cn.ourpass.zxmvc.annotation.XController;
 import cn.ourpass.zxmvc.annotation.XRepository;
 import cn.ourpass.zxmvc.annotation.XRequestMapping;
 import cn.ourpass.zxmvc.annotation.XService;
 import cn.ourpass.zxmvc.bean.EntityBean;
 import cn.ourpass.zxmvc.bean.RequestMappingBean;
+import cn.ourpass.zxmvc.utils.AnnotationHelp;
 import cn.ourpass.zxmvc.utils.ClassUtils;
 import cn.ourpass.zxmvc.utils.RequestUtil;
 
@@ -32,7 +34,7 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class XServletMaping {
-    private final static Logger log = Logger.getLogger(XServletMaping.class);
+    private static final Logger log = LoggerFactory.getLogger(XServletMaping.class);
     /**管理的bean集合**/
     private static Map<String, EntityBean> BEAN_MAP = new HashMap<String, EntityBean>();
     /**路径映射map**/
@@ -70,7 +72,8 @@ public class XServletMaping {
         List<EntityBean> beanList = ClassUtils.scanClasses(rootPath);
         if (beanList != null && beanList.size() > 0) {
             for (EntityBean eb : beanList) {
-                Class clazz = eb.getClazz();
+                @SuppressWarnings("unchecked")
+                Class<? extends Annotation> clazz = (Class<? extends Annotation>) eb.getClazz();
                 //保存由框架管理的bean
                 if(AnnotationHelp.isHasTheAnnotation(clazz, XController.class) 
                         || AnnotationHelp.isHasTheAnnotation(clazz, XService.class)

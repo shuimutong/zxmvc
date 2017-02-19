@@ -518,7 +518,7 @@ public class DateUtils {
 		calendar.set(calendar.get(Calendar.YEAR), calendar
 				.getActualMaximum(Calendar.MONTH), calendar
 				.getActualMaximum(Calendar.DATE), 0, 0, 0);
-		calendar.set(calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
+		calendar.set(Calendar.DATE, calendar.getActualMaximum(Calendar.DATE));
 		return formatMe(calendar.getTime());
 	}
 
